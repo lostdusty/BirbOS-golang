@@ -1,8 +1,8 @@
-# ! !   THE BEST OPERATE SYSTEM 2019 DOWNLOAD FREE NOW ON WINDOWS  !!
-# CREATE BY XADREI DUKMEMZ AND ADVERTISMENT2017
-TUTORIAL https://www.youtube.com/watch?v=z7QzLIaDbOY
+# The BirbOS ~joke~ but in Golang
+### Originaly created by Xandrei Dukemz and Ad2017
 
-https://github.com/BirbOSDev/birbos2/
+Tutorial: soon:tm:
+Check this: https://github.com/BirbOSDev/birbos2/
 
 
 
