@@ -11,15 +11,15 @@ import (
 	"time"
 	//"log"
 	//"bufio"
-	"io/ioutil"
 	"github.com/sqweek/dialog"
+	"io/ioutil"
 )
 
 var clear map[string]func() //create a map for storing clear funcs
 
-func check (e error) {
+func check(e error) {
 	if e != nil {
-	panic(e)
+		panic(e)
 	}
 }
 func init() {
@@ -83,17 +83,11 @@ func bootloader() {
 	time.Sleep(1 * time.Second)
 	fmt.Print(".")
 	time.Sleep(3 * time.Second)
-	if _, err := os.Stat("birbtool.CMD"); os.IsNotExist(err) {
-		fmt.Println("\nbirbtool.CMD is missing, system cannot boot.\nRestarting in 10 seconds....")
-		time.Sleep(10 * time.Second)
-		CallClear()
-		main()
-	} else {
-		boot()
-	}
+	boot()
 }
 func boot() {
 	fmt.Println("\nDetecting PCI-E devices.....")
+	time.Sleep(3 * time.Second)
 	CallClear()
 	if _, err := os.Stat("fsetup.e"); os.IsNotExist(err) {
 		fmt.Println("Completing first time setup...")
@@ -106,23 +100,23 @@ func boot() {
 }
 
 func bos() {
-fmt.Println("Skiping first time setup")
+	fmt.Println("Skiping first time setup")
 }
 
 func usrtool() {
-fmt.Println("Press any key to continue to user creation.")
-fmt.Print("\nType your username: ")
-var usrname string
-fmt.Scan(&usrname)
-pwd := dialog.Message("Do you want your account to have a password?").Title("Protect with password?").YesNo()
-if pwd {
-var passwd string
-fmt.Print("\nType your password: ")
-fmt.Scan(&passwd)
-fmt.Println("\nUsername:", usrname, "password:", passwd)
-} else {
-fmt.Println("\nLoading your personal settings....")
-}
+	fmt.Println("Press any key to continue to user creation.")
+	fmt.Print("\nType your username: ")
+	var usrname string
+	fmt.Scan(&usrname)
+	pwd := dialog.Message("Do you want your account to have a password?").Title("Protect with password?").YesNo()
+	if pwd {
+		var passwd string
+		fmt.Print("\nType your password: ")
+		fmt.Scan(&passwd)
+		fmt.Println("\nUsername:", usrname, "password:", passwd)
+	} else {
+		fmt.Println("\nLoading your personal settings....")
+	}
 }
 
 func main() {
@@ -133,7 +127,7 @@ func main() {
 }
 
 func writefirstsetup() {
-d1 := []byte("first-setup-complete")
-    err := ioutil.WriteFile("fsetup.e", d1, 0644)
-    check(err)
+	d1 := []byte("first-setup-complete")
+	err := ioutil.WriteFile("fsetup.e", d1, 0644)
+	check(err)
 }
